@@ -12,28 +12,32 @@ const Index = () => {
       description: "A nursing and staffing management platform for healthcare facilities in the U.S.",
       achievement: "Streamlined delivery cycles by 20% by enhancing collaboration between QA, product, and design teams.",
       technologies: ["Sprint Planning", "UAT", "Stakeholder Management"],
-      icon: Users
+      icon: Users,
+      link: "https://facility.goagalia.com/"
     },
     {
       title: "Oklahoma University EdTech App",
       description: "An exam-prep app for firefighter students to practice through flashcards, audio, and tests.",
       achievement: "Delivered MVP within 8 weeks while maintaining 100% requirement traceability.",
       technologies: ["Jira", "Release Management", "Academic Coordination"],
-      icon: Target
+      icon: Target,
+      link:"https://www.ifsta.org/shop/product-categories/ifsta-apps"
     },
     {
       title: "Blueverse (Automation Platform)",
       description: "A multi-region app for automated car/bike cleaning services.",
       achievement: "Enabled PMO-level reporting structure that improved SLA visibility by 30%.",
       technologies: ["PMO Reporting", "Milestone Tracking", "Process Management"],
-      icon: TrendingUp
+      icon: TrendingUp,
+      link: "https://blueverseindia.com/"
     },
     {
       title: "Bitetime (Catering Marketplace)",
       description: "A U.S.-based catering service platform to manage vendor events and real-time bookings.",
       achievement: "Helped reduce onboarding cycle for new vendors by 25% through better process mapping.",
       technologies: ["Project Charter", "UAT Documentation", "Process Mapping"],
-      icon: Award
+      icon: Award,
+      link: "https://bitetime.com/"
     }
   ];
 
@@ -198,7 +202,8 @@ const Index = () => {
             {projects.map((project, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
-                  <div className="flex items-start gap-3">
+                  <a href={project.link} target="_blank">
+                    <div className="flex items-start gap-3">
                     <div className="p-2 bg-blue-100 rounded-lg">
                       <project.icon className="w-6 h-6 text-blue-600" />
                     </div>
@@ -207,6 +212,8 @@ const Index = () => {
                       <CardDescription className="mt-2">{project.description}</CardDescription>
                     </div>
                   </div>
+                  </a>
+                  
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
