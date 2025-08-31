@@ -316,12 +316,24 @@ const Index = () => {
             <div>
               <h3 className="text-xl font-semibold text-slate-800 mb-4">Certifications</h3>
               <div className="space-y-2">
-                <Badge className="mr-4 py-2 px-4 bg-green-100 text-green-800">
-                  Google Project Management Certificate – Coursera
-                </Badge>
-                <Badge className="py-2 px-4 bg-green-100 text-green-800">
-                  Agile with Atlassian Jira – Coursera
-                </Badge>
+                <Button 
+                  variant="outline" 
+                  className="mr-4 py-2 px-4 bg-green-100 text-green-800 border-green-300 hover:bg-green-200 hover:border-green-400 transition-colors"
+                  asChild
+                >
+                  <a href="https://drive.google.com/drive/u/0/folders/1HXRJF3mNiz7YOdhwNEGPpvi3LTJ-l47x" target="_blank" rel="noopener noreferrer">
+                    Google Project Management Certificate – Coursera
+                  </a>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="py-2 px-4 bg-green-100 text-green-800 border-green-300 hover:bg-green-200 hover:border-green-400 transition-colors"
+                  asChild
+                >
+                  <a href="https://drive.google.com/drive/u/0/folders/1HXRJF3mNiz7YOdhwNEGPpvi3LTJ-l47x" target="_blank" rel="noopener noreferrer">
+                    Agile with Atlassian Jira – Coursera
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -349,14 +361,14 @@ const Index = () => {
                 </a>
               </Button>
               
-              <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700" asChild>
+              <Button size="lg" variant="outline" className="border-slate-600 text-slate-800 hover:bg-slate-700 hover:text-white" asChild>
                 <a href="https://linkedin.com/in/ankitsingh00" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   <Linkedin className="w-5 h-5" />
                   LinkedIn Profile
                 </a>
               </Button>
               
-              <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700" asChild>
+              <Button size="lg" variant="outline" className="border-slate-600 text-slate-800 hover:bg-slate-700 hover:text-white" asChild>
                 <a href="tel:+919910123644" className="flex items-center gap-2">
                   <Phone className="w-5 h-5" />
                   Call Now
@@ -370,7 +382,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-slate-900 text-slate-400 py-8">
         <div className="container mx-auto px-6 text-center">
-          <p>&copy; 2024 Ankit Singh. All rights reserved.</p>
+          <p>&copy; 2025 Ankit Singh. All rights reserved.</p>
           <p className="mt-2 text-sm">Project Coordinator | PMO | New Delhi, India</p>
         </div>
       </footer>
