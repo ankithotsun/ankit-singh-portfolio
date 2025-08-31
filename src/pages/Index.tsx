@@ -1,12 +1,23 @@
 
-import { Mail, Phone, Linkedin, ExternalLink, MapPin, Calendar, Users, Target, Award, TrendingUp } from "lucide-react";
+import React from "react";
+import { Mail, Phone, Linkedin, ExternalLink, MapPin, Calendar, Users, Target, Award, TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 const Index = () => {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  
   const projects = [
+    {
+      title: "LG CNS (Digital Transformation & Cloud Integration)",
+      description: "A South Korean global IT, AI, and cloud services provider focused on digital transformation solutions.",
+      achievement: "Delivered financial and milestone forecasts that improved billing accuracy by 25% and enhanced stakeholder adoption of sprint metrics.",
+      technologies: ["Sprint Planning", "Risk Management", "Financial Forecasting", "Resource Utilization"],
+      icon: Award,
+      link: "https://lgcns.com"
+    },
     {
       title: "Agalia (Healthcare SaaS)",
       description: "A nursing and staffing management platform for healthcare facilities in the U.S.",
@@ -24,6 +35,14 @@ const Index = () => {
       link:"https://www.ifsta.org/shop/product-categories/ifsta-apps"
     },
     {
+      title: "IvyCap Ventures (Investor Engagement Platform)",
+      description: "A portfolio and investor reporting system for a leading Indian VC firm.",
+      achievement: "Reduced reporting turnaround by ~25% by maintaining risk registers and optimizing backlog prioritization.",
+      technologies: ["Risk Management", "Jira Backlog Grooming", "Reporting Dashboards"],
+      icon: TrendingUp,
+      link: "https://ivycapventures.com/"
+    },
+    {
       title: "Blueverse (Automation Platform)",
       description: "A multi-region app for automated car/bike cleaning services.",
       achievement: "Enabled PMO-level reporting structure that improved SLA visibility by 30%.",
@@ -38,14 +57,34 @@ const Index = () => {
       technologies: ["Project Charter", "UAT Documentation", "Process Mapping"],
       icon: Award,
       link: "https://bitetime.com/"
+    },
+    {
+      title: "CEEW (Research & Policy Platforms)",
+      description: "Digital platforms and microsites to publish research and policy event content.",
+      achievement: "Ensured 100% compliance with publishing deadlines by implementing SOPs and managing sprint deliveries.",
+      technologies: ["Requirement Gathering", "Sprint Planning", "SOP Documentation"],
+      icon: Target,
+      link: "https://www.ceew.in/"
+    },
+    {
+      title: "Divoom (E-commerce & Companion App)",
+      description: "A global audio brand's e-commerce and mobile app for pixel-art Bluetooth devices.",
+      achievement: "Reduced post-release defects by 18% by driving UAT cycles and aligning releases with product launches.",
+      technologies: ["Sprint Planning", "UAT", "Release Coordination"],
+      icon: Users,
+      link: "https://divoom.com/"
     }
   ];
 
   const skills = [
     "Project Coordination", "PMO Operations", "Agile & Scrum Practices",
     "Sprint Documentation", "Client & Team Onboarding", "Utilization Tracking",
-    "Jira", "MS Excel", "Google Sheets Automation", "UAT & Risk Logs",
-    "Stakeholder Communication", "SOP Repository Management", "SLA Reporting"
+    "Jira", "MS Excel", "Google Sheets & Excel Automation", "UAT & Risk Logs",
+    "Stakeholder Communication", "SOP Repository Management", "SLA Reporting",
+    "Risk & Compliance Management", "Budgeting & Revenue Forecasting",
+    "Resource Allocation & Team Utilization", "Backlog Grooming & Prioritization",
+    "Financial & Milestone Reporting", "Cross-Functional Team Leadership",
+    "AI-Driven Project Analytics"
   ];
 
   const achievements = [
@@ -54,6 +93,14 @@ const Index = () => {
     "Ensured 100% onboarding compliance and tool access readiness for new team members",
     "Created PMO dashboards that improved visibility into resource utilization and SLA adherence"
   ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 4 >= projects.length ? 0 : prev + 4));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 4 < 0 ? Math.max(0, projects.length - 4) : prev - 4));
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -131,18 +178,50 @@ const Index = () => {
           </h2>
           
           <div className="max-w-4xl mx-auto space-y-8">
+            <Card className="border-l-4 border-l-purple-500">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <CardTitle className="text-xl text-slate-800">Project Coordinator</CardTitle>
+                    <CardDescription className="text-lg font-medium text-purple-600">
+                      <a href="https://encora.com" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        Encora Digital LLP
+                      </a>
+                    </CardDescription>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-600">
+                    <Calendar className="w-4 h-4" />
+                    <span className="text-sm">Aug 2025 – Present</span>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600 mb-4 italic">
+                  A global digital engineering services and innovation partner specializing in cloud-first, data-first, AI-first solutions.
+                </p>
+                <ul className="space-y-2 text-slate-700">
+                  <li>• Managing a team of 45+ engineers across delivery operations, ensuring compliance.</li>
+                  <li>• Preparing detailed tempo charts, invoice generation, account management reports, item journals, burndowns, and budget/revenue forecasts.</li>
+                  <li>• Ensuring alignment between financial tracking and project deliverables and facilitating cross-functional team readiness.</li>
+                  <li>• Managed risk logs, compliance artifacts, and resource utilization tracking to ensure seamless project delivery.</li>
+                </ul>
+              </CardContent>
+            </Card>
+
             <Card className="border-l-4 border-l-blue-500">
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div>
                     <CardTitle className="text-xl text-slate-800">Project Coordinator</CardTitle>
                     <CardDescription className="text-lg font-medium text-blue-600">
-                      Nickelfox Technologies
+                      <a href="https://nickelfox.com" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        Nickelfox Technologies
+                      </a>
                     </CardDescription>
                   </div>
                   <div className="flex items-center gap-2 text-slate-600">
                     <Calendar className="w-4 h-4" />
-                    <span className="text-sm">Dec 2023 – Present</span>
+                    <span className="text-sm">Dec 2023 – Aug 2025</span>
                   </div>
                 </div>
               </CardHeader>
@@ -166,7 +245,9 @@ const Index = () => {
                   <div>
                     <CardTitle className="text-xl text-slate-800">Process/Project Coordinator</CardTitle>
                     <CardDescription className="text-lg font-medium text-green-600">
-                      Appinventiv Technologies
+                      <a href="https://appinventiv.com" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        Appinventiv Technologies
+                      </a>
                     </CardDescription>
                   </div>
                   <div className="flex items-center gap-2 text-slate-600">
@@ -198,40 +279,75 @@ const Index = () => {
             Key Projects
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {projects.map((project, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardHeader>
-                  <a href={project.link} target="_blank">
-                    <div className="flex items-start gap-3">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <project.icon className="w-6 h-6 text-blue-600" />
+          <div className="relative max-w-6xl mx-auto">
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white border border-slate-200 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+              aria-label="Previous projects"
+            >
+              <ChevronLeft className="w-6 h-6 text-slate-600" />
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white border border-slate-200 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+              aria-label="Next projects"
+            >
+              <ChevronRight className="w-6 h-6 text-slate-600" />
+            </button>
+
+            {/* Projects Grid */}
+            <div className="grid md:grid-cols-2 gap-8 px-12">
+              {projects.slice(currentSlide, currentSlide + 4).map((project, index) => (
+                <Card key={currentSlide + index} className="hover:shadow-lg transition-shadow duration-300">
+                  <CardHeader>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <div className="flex items-start gap-3">
+                        <div className="p-2 bg-blue-100 rounded-lg">
+                          <project.icon className="w-6 h-6 text-blue-600" />
+                        </div>
+                        <div className="flex-1">
+                          <CardTitle className="text-lg text-slate-800">{project.title}</CardTitle>
+                          <CardDescription className="mt-2">{project.description}</CardDescription>
+                        </div>
+                      </div>
+                    </a>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
+                        <p className="text-sm text-green-800 font-medium">Achievement:</p>
+                        <p className="text-sm text-green-700 mt-1">{project.achievement}</p>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, techIndex) => (
+                          <Badge key={techIndex} variant="secondary" className="text-xs">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-lg text-slate-800">{project.title}</CardTitle>
-                      <CardDescription className="mt-2">{project.description}</CardDescription>
-                    </div>
-                  </div>
-                  </a>
-                  
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
-                      <p className="text-sm text-green-800 font-medium">Achievement:</p>
-                      <p className="text-sm text-green-700 mt-1">{project.achievement}</p>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="secondary" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Slide Indicators */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {Array.from({ length: Math.ceil(projects.length / 4) }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentSlide(i * 4)}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                    i === Math.floor(currentSlide / 4) 
+                      ? 'bg-blue-600 scale-125' 
+                      : 'bg-slate-300 hover:bg-slate-400'
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -290,15 +406,23 @@ const Index = () => {
             <Card>
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-slate-800 mb-2">Master of Computer Applications (MCA)</h3>
-                <p className="text-blue-600 font-medium">Chandigarh University</p>
-                <p className="text-slate-600">2023 – Present | CGPA: 9.0 / 10 (90%)</p>
+                <p className="text-blue-600 font-medium">
+                  <a href="https://www.cuchd.in/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    Chandigarh University
+                  </a>
+                </p>
+                <p className="text-slate-600">2024 – Present | CGPA: 9.0 / 10 (90%)</p>
               </CardContent>
             </Card>
             
             <Card>
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-slate-800 mb-2">Master of Business Administration (MBA)</h3>
-                <p className="text-blue-600 font-medium">Narsee Monjee Institute of Management Studies</p>
+                <p className="text-blue-600 font-medium">
+                  <a href="https://www.nmims.edu/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    Narsee Monjee Institute of Management Studies
+                  </a>
+                </p>
                 <p className="text-slate-600">2021 – 2023 | CGPA: 8.3 / 10 (83%)</p>
               </CardContent>
             </Card>
@@ -306,7 +430,11 @@ const Index = () => {
             <Card>
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-slate-800 mb-2">Bachelor of Business Administration (BBA)</h3>
-                <p className="text-blue-600 font-medium">GGSIPU – Delhi Metropolitan Education</p>
+                <p className="text-blue-600 font-medium">
+                  <a href="https://dme.ac.in/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                    GGSIPU – Delhi Metropolitan Education
+                  </a>
+                </p>
                 <p className="text-slate-600">2018 – 2021 | CGPA: 7.9 / 10 (79%)</p>
               </CardContent>
             </Card>
