@@ -5,9 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const { toast } = useToast();
   
   const projects = [
     {
@@ -87,11 +90,44 @@ const Index = () => {
     "AI-Driven Project Analytics"
   ];
 
+  const skillTrivia = {
+    "Project Coordination": "🎯 Fun fact: The Great Wall of China was the world's largest project coordination effort - spanning 13,000+ miles!",
+    "PMO Operations": "📊 Did you know? NASA's PMO managed 400,000+ contractors for the Apollo program!",
+    "Agile & Scrum Practices": "🏃‍♂️ Scrum comes from rugby - where teams work together to move the ball forward!",
+    "Sprint Documentation": "📝 Sprint documentation is like a recipe - clear instructions prevent project disasters!",
+    "Client & Team Onboarding": "👥 Onboarding is like a first date - first impressions last forever!",
+    "Utilization Tracking": "📈 Companies with good utilization tracking are 30% more profitable!",
+    "Jira": "🦘 Jira was named after 'Gojira' (Godzilla) - because it's powerful enough to handle any project!",
+    "MS Excel": "📊 Excel has 1,048,576 rows - enough to track every project ever!",
+    "Google Sheets & Excel Automation": "🤖 Automation saves 6 hours per week - that's 312 hours per year!",
+    "UAT & Risk Logs": "🛡️ UAT catches 85% of bugs before they reach users!",
+    "Stakeholder Communication": "🗣️ 90% of project success depends on effective communication!",
+    "SOP Repository Management": "📚 SOPs are like a company's DNA - they define how things get done!",
+    "SLA Reporting": "⏰ SLAs are promises with deadlines - keeping them builds trust!",
+    "Risk & Compliance Management": "⚠️ Risk management is like playing chess - always think 3 moves ahead!",
+    "Budgeting & Revenue Forecasting": "💰 Accurate forecasting is like having a crystal ball for business!",
+    "Resource Allocation & Team Utilization": "🎯 Right person, right time, right task = project success!",
+    "Backlog Grooming & Prioritization": "🧹 A well-groomed backlog is like a clean kitchen - everything runs smoothly!",
+    "Financial & Milestone Reporting": "📊 Numbers tell stories - good reporting turns data into decisions!",
+    "Cross-Functional Team Leadership": "🤝 Leading diverse teams is like conducting an orchestra - harmony creates magic!",
+    "AI-Driven Project Analytics": "🤖 AI predicts project success with 95% accuracy - the future is now!"
+  };
+
+  const handleSkillClick = (skill: string) => {
+    toast({
+      title: skill,
+      description: skillTrivia[skill as keyof typeof skillTrivia] || "Skill mastered!",
+      duration: 3000,
+    });
+  };
+
   const achievements = [
     "Delivered 10+ successful client-facing software products across US markets",
     "Reduced delivery cycle times by 15–20% via workflow automation and reporting alignment",
     "Ensured 100% onboarding compliance and tool access readiness for new team members",
-    "Created PMO dashboards that improved visibility into resource utilization and SLA adherence"
+    "Created PMO dashboards that improved visibility into resource utilization and SLA adherence",
+    "Managed 45+ engineers across delivery operations with 100% compliance rate",
+    "Improved billing accuracy by 25% through financial forecasting and milestone tracking"
   ];
 
   const nextSlide = () => {
@@ -362,7 +398,11 @@ const Index = () => {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-wrap gap-3 justify-center">
               {skills.map((skill, index) => (
-                <Badge key={index} className="py-2 px-4 text-sm bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">
+                <Badge 
+                  key={index} 
+                  className="py-2 px-4 text-sm bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors cursor-pointer"
+                  onClick={() => handleSkillClick(skill)}
+                >
                   {skill}
                 </Badge>
               ))}
@@ -379,9 +419,21 @@ const Index = () => {
           </h2>
           
           <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-6">
-              {achievements.map((achievement, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {achievements.slice(0, 3).map((achievement, index) => (
                 <Card key={index} className="border-l-4 border-l-yellow-400">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-3">
+                      <Award className="w-6 h-6 text-yellow-500 mt-1 flex-shrink-0" />
+                      <p className="text-slate-700">{achievement}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              {achievements.slice(3, 5).map((achievement, index) => (
+                <Card key={index + 3} className="border-l-4 border-l-yellow-400">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-3">
                       <Award className="w-6 h-6 text-yellow-500 mt-1 flex-shrink-0" />
@@ -514,6 +566,7 @@ const Index = () => {
           <p className="mt-2 text-sm">Project Coordinator | PMO | New Delhi, India</p>
         </div>
       </footer>
+      <Toaster />
     </div>
   );
 };
